@@ -1,0 +1,10 @@
+./node-modules
+./package-lock.json
+./.eslintrc.json
+./config.env
+./prettierrc
+./controllers
+./models  
+./utils
+./app.js
+./server.js
