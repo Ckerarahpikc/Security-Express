@@ -1,10 +1,21 @@
-./node-modules
-./package-lock.json
-./.eslintrc.json
-./config.env
-./prettierrc
-./controllers
-./models  
-./utils
-./app.js
-./server.js
+# Ignore node_modules directory
+/node_modules
+
+# Ignore environment config file
+/config.env
+
+# Ignore package-lock.json
+/package-lock.json
+
+# Ignore specific configuration files
+/.eslintrc.json
+/.prettierrc
+
+# Ignore directories with your code
+/controllers
+/models  
+/utils
+
+# Ignore specific files
+/app.js
+/server
