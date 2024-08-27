@@ -16,7 +16,7 @@
 /controllers
 /models  
 /utils
+/routes
 
 # Ignore specific files
-/app.js
 /server.js
