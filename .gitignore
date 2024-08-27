@@ -12,10 +12,11 @@
 /.prettierrc
 
 # Ignore directories with your code
+/dev-data
 /controllers
 /models  
 /utils
 
 # Ignore specific files
 /app.js
-/server
+/server.js
