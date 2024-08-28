@@ -61,9 +61,10 @@ const limiter = RateLimit({
 // but personally I'm gonna use this
 const limiterMongo = RateLimit({
   store: new MongoStore({
-    uri: process.env.MONGO_DRIVER_CLEAR,
-    user: process.env.MONGO_USER,
-    password: process.env.MONGO_PASSWORD,
+    uri: process.env.MONGO_DRIVER.replace(
+      "<password>",
+      process.env.MONGO_PASSWORD
+    ),
     // should match windowMs
     expireTimeMs: 30 * 60 * 1000,
     errorHandler: console.error.bind(null, "rate-limit-mongo")
