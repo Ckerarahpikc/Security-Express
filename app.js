@@ -6,6 +6,7 @@ const MongoStore = require("rate-limit-mongo");
 // packages security
 const hpp = require("hpp");
 const RateLimit = require("express-rate-limit");
+const mongoSanitize = require("express-mongo-sanitize");
 
 const GEC = require("./controllers/globalErrorController");
 const testRoute = require("./routes/testRoute");
@@ -14,6 +15,7 @@ const securityMiddleware = require("./securityTools/helmetSecure");
 if (process.env.NODE_ENV === "developer") {
   app.use(morgan("dev"));
 }
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // 1. hpp - http parameter pollution
@@ -78,7 +80,41 @@ app.use("/api", limiterMongo);
 // or just
 app.use(limiterMongo);
 
-// routes
+// 4. express-mongo-sanitize - this thing will check for any '$' or '.' the req.params/body/query contains (it can remove/replace)
+// note: so by default the '$' and '.' are completely removed, so we can use it just like this: app.use(mongoSanitize());
+// but for me im gonna use the following one
+app.use(
+  mongoSanitize({
+    replaceWith: "^", // replace '$' and '.' with
+    allowDots: true, // no comments
+
+    // 'onSanitize' - this will be called after the request value was sanitized
+    onSanitize: ({ req, key }) => {
+      // log(this request[key] is sanitize)
+    },
+
+    // 'dryRun' - this will run the dryrun mode (very basic)
+    // dryRun: true,
+    onSanitize: ({ req, key }) => {
+      // log(this request[key] will be sanitize)
+    }
+  })
+);
+// note: we can also use the sanitize with options like so: 'mongoSanitize.sanitize(payload, {options})' by assuming we have this payload:
+const payload = {
+  username: "john_doe",
+  email: "john@example.com",
+  password: "password123",
+  // This might be dangerous if not sanitized:
+  injectedField: { $gt: "" }
+};
+// note: we can also check for those payloads like so:
+// const isSuspicious = mongoSanitize.has(payload, true)
+// the 'true' is optional and means:
+// 1. we want to exclude '.' from sanitizing => 'true'
+// 2. we don't want to exclude '.' from sanitizing => just don't include 'true'
+
+// routes ===================================================
 app.use("/api/users", testRoute);
 
 app.use(GEC);
