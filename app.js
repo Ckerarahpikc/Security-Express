@@ -11,6 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const GEC = require("./controllers/globalErrorController");
 const testRoute = require("./routes/testRoute");
 const securityMiddleware = require("./securityTools/helmetSecure");
+const sanitizeAThingOrTwo = require("./securityTools/xssFilter");
 
 if (process.env.NODE_ENV === "developer") {
   app.use(morgan("dev"));
@@ -111,8 +112,11 @@ const payload = {
 // note: we can also check for those payloads like so:
 // const isSuspicious = mongoSanitize.has(payload, true)
 // the 'true' is optional and means:
-// 1. we want to exclude '.' from sanitizing => 'true'
-// 2. we don't want to exclude '.' from sanitizing => just don't include 'true'
+// a. we want to exclude '.' from sanitizing => 'true'
+// b. we don't want to exclude '.' from sanitizing => just don't include 'true'
+
+// 5. xss - so here we go again, this module filter the user inputs (body, params, etc.), here is how to use it: check out /securityTools/xssFilter.js
+app.use(sanitizeAThingOrTwo);
 
 // routes ===================================================
 app.use("/api/users", testRoute);
