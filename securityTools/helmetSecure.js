@@ -8,7 +8,8 @@ const securityMiddleware = helmet({
     directives: {
       "default-src": ["'self'"], // only allow content from the same domain as your webiste
       "script-src": ["'self'", "trusted-cdn.com"], // scripts can only be loaded from your website or a trusted external source, in this case, "trusted-cdn.com"
-      "style-src": ["'self'", "trusted-cdn.com"] // similarly, this directive controls where stylesheets can be loaded from, ensuring that only trusted sources are used
+      "style-src": ["'self'", "trusted-cdn.com"], // similarly, this directive controls where stylesheets can be loaded from, ensuring that only trusted sources are used
+      "style-src": ["'self'", "https://fonts.googleapis.com"]
     }
   },
 
