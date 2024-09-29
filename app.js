@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const MongoStore = require("rate-limit-mongo");
+const path = require("path");
 
 // packages security
 const hpp = require("hpp");
@@ -18,6 +19,9 @@ if (process.env.NODE_ENV === "developer") {
 }
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
 // 1. hpp - http parameter pollution
 // Why - attackers can intentionally change request parameters to do/create/manage mechanism that we've build.
@@ -78,8 +82,8 @@ const limiterMongo = RateLimit({
 });
 // then let's say that I have this route (host/websiteName/users/plans) and I want to use limit rate, I'll do it like this:
 app.use("/api", limiterMongo);
-// or just
-app.use(limiterMongo);
+// U can use this for all of your routes
+// app.use(limiterMongo);
 
 // 4. express-mongo-sanitize - this thing will check for any '$' or '.' the req.params/body/query contains (it can remove/replace)
 // note: so by default the '$' and '.' are completely removed, so we can use it just like this: app.use(mongoSanitize());
@@ -105,7 +109,7 @@ app.use(
 const payload = {
   username: "john_doe",
   email: "john@example.com",
-  password: "password123",
+  password: "passw'ord123",
   // This might be dangerous if not sanitized:
   injectedField: { $gt: "" }
 };
@@ -113,13 +117,16 @@ const payload = {
 // const isSuspicious = mongoSanitize.has(payload, true)
 // the 'true' is optional and means:
 // a. we want to exclude '.' from sanitizing => 'true'
-// b. we don't want to exclude '.' from sanitizing => just don't include 'true'
+// b. we don't want to exclude '.' from sanitizing => just don't include true'
 
 // 5. xss - so here we go again, this module filter the user inputs (body, params, etc.), here is how to use it: check out /securityTools/xssFilter.js
 app.use(sanitizeAThingOrTwo);
 
 // routes ===================================================
-app.use("/api/users", testRoute);
+app.route("/").get((req, res) => {
+  res.status(200).render("layout");
+});
+// app.use("/api/users", testRoute);
 
 app.use(GEC);
 
