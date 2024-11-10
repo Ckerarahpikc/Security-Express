@@ -8,6 +8,7 @@ const path = require("path");
 const hpp = require("hpp");
 const RateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
+const cors = require("cors");
 
 const GEC = require("./controllers/globalErrorController");
 const viewRouter = require("./routes/viewRouter");
@@ -121,6 +122,26 @@ const payload = {
 
 // 5. xss - so here we go again, this module filter the user inputs (body, params, etc.), here is how to use it: check out /securityTools/xssFilter.js
 app.use(sanitizeAThingOrTwo);
+
+// 6. cors - this is used to enable CORS with various options
+// 6.1. Enable all CORS Request
+app.use(cors());
+
+// 6.2. Enable in a single route
+// app.use("/any/ofyour/route/here", cors(), yourMiddleware)
+
+// 6.3. Allowing Specific Origins And More
+// app.use(
+// cors({
+// origin: "https://example.com",
+// If your application needs to include credentials (such as cookies) in requests, enable the credentials
+// credentials: true,
+// To specify which HTTP methods (e.g., GET, POST) are allowed, use the methods option
+// methods: "GET,POST,PUT,DELETE",
+// If you need to allow specific headers, you can set them with the allowedHeaders option
+// allowedHeaders: ["Content-Type", "Authorization"]
+// })
+// );
 
 // routes ===================================================
 app.use("/", viewRouter);
