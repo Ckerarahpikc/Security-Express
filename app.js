@@ -1,3 +1,4 @@
+// ==== SIMPLE TO UNDERSTAND EXPLANATION OF THE SECURITY AND EXPRESS IN GENERAL
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -12,16 +13,20 @@ const cors = require("cors");
 
 const GEC = require("./controllers/globalErrorController");
 const viewRouter = require("./routes/viewRouter");
-const securityMiddleware = require("./securityTools/helmetSecure");
-const sanitizeAThingOrTwo = require("./securityTools/xssFilter");
+const securityMiddleware = require("./tools/helmetSecure");
+const sanitizeAThingOrTwo = require("./tools/xssFilter");
 
 if (process.env.NODE_ENV === "developer") {
   app.use(morgan("dev"));
 }
+// this middleware will transform all incoming request into key-value pairs, which is easy to maintain and build smth cool
 app.use(express.urlencoded({ extended: true }));
+// by using .json() it will let us to use PUT / PATCH / POST that sends JSON data
 app.use(express.json());
 
+// just activate 'pug' engine, it could me either 'hbs' or 'mjs' also
 app.set("view engine", "pug");
+// views folder is responsible for all the views files we are going to use in the future in order to render pages on the web browser
 app.set("views", path.join(__dirname, "views"));
 
 // 1. hpp - http parameter pollution
@@ -29,7 +34,7 @@ app.set("views", path.join(__dirname, "views"));
 // How it's helping - HPP puts the array parameters in req.query / body and just select the last parameter value
 app.use(hpp());
 
-// 2. Check /securityTools/helmetSecure.js
+// 2. Check /tools/helmetSecure.js
 app.use(securityMiddleware);
 
 // 3. rateLimit - this function accepts an options object and returns the rate limiting middleware (notice: there is not required configurations, all options have reasonable defaults)

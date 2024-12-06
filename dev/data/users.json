@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "age": 28,
+    "gender": "Male",
+    "occupation": {
+      "title": "Software Engineer",
+      "department": "Development",
+      "skills": ["JavaScript", "Node.js", "React"]
+    },
+    "address": {
+      "street": "123 Main St",
+      "city": "San Francisco",
+      "state": "California",
+      "zip": "94105"
+    },
+    "phoneNumbers": [{ "type": "home", "number": "+1-415-555-1234" }],
+    "isActive": true,
+    "registrationDate": "2023-02-15T10:15:30Z",
+    "lastLogin": "2024-07-28T14:45:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "age": 34,
+    "gender": "Female",
+    "occupation": {
+      "title": "Graphic Designer",
+      "department": "Creative",
+      "skills": ["Photoshop", "Illustrator", "InDesign"]
+    },
+    "address": {
+      "street": "456 Elm St",
+      "city": "New York",
+      "state": "New York",
+      "zip": "10001"
+    },
+    "phoneNumbers": [{ "type": "mobile", "number": "+1-212-555-5678" }],
+    "isActive": true,
+    "registrationDate": "2022-11-23T08:30:00Z",
+    "lastLogin": "2024-08-01T09:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Michael Johnson",
+    "email": "michaelj@example.com",
+    "age": 42,
+    "gender": "Male",
+    "occupation": {
+      "title": "Project Manager",
+      "department": "Operations",
+      "skills": ["Agile", "Scrum", "Leadership"]
+    },
+    "address": {
+      "street": "789 Oak St",
+      "city": "Chicago",
+      "state": "Illinois",
+      "zip": "60611"
+    },
+    "phoneNumbers": [{ "type": "home", "number": "+1-312-555-7890" }],
+    "isActive": false,
+    "registrationDate": "2023-05-10T13:00:00Z",
+    "lastLogin": "2024-07-15T11:00:00Z"
+  },
+  {
+    "id": 4,
+    "name": "Emily Davis",
+    "email": "emilydavis@example.com",
+    "age": 25,
+    "gender": "Female",
+    "occupation": {
+      "title": "Marketing Specialist",
+      "department": "Marketing",
+      "skills": ["SEO", "Content Writing", "Social Media"]
+    },
+    "address": {
+      "street": "101 Pine St",
+      "city": "Austin",
+      "state": "Texas",
+      "zip": "73301"
+    },
+    "phoneNumbers": [{ "type": "work", "number": "+1-512-555-9876" }],
+    "isActive": true,
+    "registrationDate": "2023-03-21T09:45:00Z",
+    "lastLogin": "2024-07-30T15:30:00Z"
+  },
+  {
+    "id": 5,
+    "name": "David Brown",
+    "email": "davidbrown@example.com",
+    "age": 30,
+    "gender": "Male",
+    "occupation": {
+      "title": "Data Analyst",
+      "department": "Analytics",
+      "skills": ["Python", "SQL", "Data Visualization"]
+    },
+    "address": {
+      "street": "202 Cedar St",
+      "city": "Seattle",
+      "state": "Washington",
+      "zip": "98101"
+    },
+    "phoneNumbers": [{ "type": "mobile", "number": "+1-206-555-6543" }],
+    "isActive": true,
+    "registrationDate": "2023-07-12T11:20:00Z",
+    "lastLogin": "2024-08-02T10:15:00Z"
+  },
+  {
+    "id": 6,
+    "name": "Olivia Wilson",
+    "email": "oliviawilson@example.com",
+    "age": 29,
+    "gender": "Female",
+    "occupation": {
+      "title": "Product Manager",
+      "department": "Product",
+      "skills": ["Roadmapping", "UX Design", "A/B Testing"]
+    },
+    "address": {
+      "street": "303 Maple St",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02108"
+    },
+    "phoneNumbers": [{ "type": "work", "number": "+1-617-555-8765" }],
+    "isActive": true,
+    "registrationDate": "2023-06-05T14:10:00Z",
+    "lastLogin": "2024-08-03T13:25:00Z"
+  },
+  {
+    "id": 7,
+    "name": "Sophia Martinez",
+    "email": "sophiam@example.com",
+    "age": 27,
+    "gender": "Female",
+    "occupation": {
+      "title": "UI/UX Designer",
+      "department": "Design",
+      "skills": ["Sketch", "Figma", "Wireframing"]
+    },
+    "address": {
+      "street": "404 Birch St",
+      "city": "Los Angeles",
+      "state": "California",
+      "zip": "90001"
+    },
+    "phoneNumbers": [{ "type": "mobile", "number": "+1-213-555-9876" }],
+    "isActive": true,
+    "registrationDate": "2023-08-01T08:50:00Z",
+    "lastLogin": "2024-08-05T12:00:00Z"
+  },
+  {
+    "id": 8,
+    "name": "Liam Taylor",
+    "email": "liamt@example.com",
+    "age": 33,
+    "gender": "Male",
+    "occupation": {
+      "title": "DevOps Engineer",
+      "department": "IT",
+      "skills": ["AWS", "Docker", "Kubernetes"]
+    },
+    "address": {
+      "street": "505 Ash St",
+      "city": "Denver",
+      "state": "Colorado",
+      "zip": "80202"
+    },
+    "phoneNumbers": [{ "type": "work", "number": "+1-303-555-5432" }],
+    "isActive": true,
+    "registrationDate": "2023-09-19T16:30:00Z",
+    "lastLogin": "2024-08-04T11:00:00Z"
+  },
+  {
+    "id": 9,
+    "name": "James Anderson",
+    "email": "jamesa@example.com",
+    "age": 31,
+    "gender": "Male",
+    "occupation": {
+      "title": "Cybersecurity Specialist",
+      "department": "Security",
+      "skills": ["Penetration Testing", "Encryption", "Network Security"]
+    },
+    "address": {
+      "street": "606 Walnut St",
+      "city": "Phoenix",
+      "state": "Arizona",
+      "zip": "85001"
+    },
+    "phoneNumbers": [{ "type": "mobile", "number": "+1-602-555-4321" }],
+    "isActive": true,
+    "registrationDate": "2023-04-28T12:40:00Z",
+    "lastLogin": "2024-08-06T09:45:00Z"
+  },
+  {
+    "id": 10,
+    "name": "Emma White",
+    "email": "emmawhite@example.com",
+    "age": 26,
+    "gender": "Female",
+    "occupation": {
+      "title": "QA Engineer",
+      "department": "Quality Assurance",
+      "skills": ["Test Automation", "Bug Tracking", "Performance Testing"]
+    },
+    "address": {
+      "street": "707 Pine St",
+      "city": "Miami",
+      "state": "Florida",
+      "zip": "33101"
+    },
+    "phoneNumbers": [{ "type": "work", "number": "+1-305-555-6543" }],
+    "isActive": true,
+    "registrationDate": "2023-10-22T18:20:00Z",
+    "lastLogin": "2024-08-07T14:30:00Z"
+  }
+]
